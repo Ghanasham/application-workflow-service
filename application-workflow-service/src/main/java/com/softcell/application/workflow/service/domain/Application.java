@@ -1,6 +1,7 @@
 package com.softcell.application.workflow.service.domain;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -95,7 +96,7 @@ public abstract class Application {
 	 * List of events happened to this application.
 	 */
 	@OneToMany
-	private List<ApplicationEvent> events;
+	private List<ApplicationEvent> events = new ArrayList<>(4);
 	
 	public void approve(String comment){
 		
