@@ -192,4 +192,12 @@ public abstract class Application {
 	public void setAssigneeId(Long assigneeId) {
 		this.assigneeId = assigneeId;
 	}
+
+	public byte getMaxLevels() {
+		return maxLevels;
+	}
+
+	public void setMaxLevels(byte maxLevels) {
+		this.maxLevels = maxLevels;
+	}
 }

@@ -54,11 +54,12 @@ public class DBApplicationService implements ApplicationService{
 	private void reAssignManager(Application application){
 		
 		//Get the next manager's employee id to assign this application to him
-		Long assigneeManagerEmployeeId = restTemplate.getForObject("http://localhost:8080/admin/manager/next-manager/" 
+		ManagerMaxLevelResponse response = restTemplate.getForObject("http://localhost:8080/admin/manager/next-manager/" 
 		+ application.getOrgId() + "/" + application.getApplicationType()
-		+ "/" + application.getLevel(), Long.class);
+		+ "/" + application.getLevel(), ManagerMaxLevelResponse.class);
 		
-		application.setAssigneeId(assigneeManagerEmployeeId);
+		application.setAssigneeId(response.getManagerEmployeeId());
+		application.setMaxLevels(response.getMaxLevels());
 				
 	}
 

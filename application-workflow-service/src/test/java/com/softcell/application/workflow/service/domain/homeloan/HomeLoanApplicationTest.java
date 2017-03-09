@@ -14,6 +14,7 @@ public class HomeLoanApplicationTest {
 		
 		HomeLoanApplication app = new HomeLoanApplication();
 		app.setAssigneeId(1L);
+		app.setMaxLevels((byte)4);
 		app.approve("Approved");
 		
 		assertEquals(State.IN_PROCESS, app.getState());
