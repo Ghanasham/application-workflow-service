@@ -44,7 +44,7 @@ public final class ApplicationEvent {
 	private String comments;
 	
 	@Column(nullable = false)
-	private LocalDateTime createTimeStamp;
+	private LocalDateTime createTimeStamp = LocalDateTime.now();
 	
 	private ApplicationEvent(){}
 	

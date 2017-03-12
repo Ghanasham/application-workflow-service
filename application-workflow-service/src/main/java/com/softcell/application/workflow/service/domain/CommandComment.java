@@ -10,6 +10,13 @@ public class CommandComment {
 	private Command command;
 	
 	private String comment;
+	
+	public CommandComment(){}
+	
+	public CommandComment(Command command, String comment){
+		this.command = command;
+		this.comment = comment;
+	}
 
 	public Command getCommand() {
 		return command;

@@ -4,12 +4,15 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Cascade;
 
 import com.softcell.application.workflow.service.domain.ApplicationEvent.EventCreatorType;
 import com.softcell.application.workflow.service.domain.ApplicationEvent.EventType;
@@ -95,7 +98,7 @@ public abstract class Application {
 	/**
 	 * List of events happened to this application.
 	 */
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<ApplicationEvent> events = new ArrayList<>(4);
 	
 	public void approve(String comment){

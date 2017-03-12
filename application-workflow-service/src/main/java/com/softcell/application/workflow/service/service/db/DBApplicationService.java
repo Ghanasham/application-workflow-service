@@ -48,15 +48,17 @@ public class DBApplicationService implements ApplicationService{
 		else if(commandComment.getCommand() == CommandComment.Command.REJECT)
 			application.reject(commandComment.getComment());
 		
-		reAssignManager(application);
+		this.saveApplication(application);
 	}
 	
 	private void reAssignManager(Application application){
 		
 		//Get the next manager's employee id to assign this application to him
-		ManagerMaxLevelResponse response = restTemplate.getForObject("http://localhost:8080/admin/manager/next-manager/" 
+		ManagerMaxLevelResponse response = restTemplate.getForObject("http://localhost:8090/admin/manager/next-manager/" 
 		+ application.getOrgId() + "/" + application.getApplicationType()
 		+ "/" + application.getLevel(), ManagerMaxLevelResponse.class);
+		
+		System.out.println(response.getManagerEmployeeId() + " - " + response.getMaxLevels());
 		
 		application.setAssigneeId(response.getManagerEmployeeId());
 		application.setMaxLevels(response.getMaxLevels());
